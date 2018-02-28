@@ -1,0 +1,62 @@
+{
+  "name": "boomerang-socket",
+  "version": "0.1.0",
+  "description": "A simple WebSocket wrapper with automatic reconnection",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "webpack",
+    "clean": "rm -rf ./lib",
+    "coverage": "cat ./coverage/lcov.info | coveralls",
+    "build:prod": "npm run clean && npm run build && npm run build:types",
+    "build:types": "cp -a ./src/types.ts ./lib/index.d.ts",
+    "format": "prettier --write \"./{scripts,src}/**/*.{js,ts?(x)}\"",
+    "format:check": "prettier --list-different \"./{scripts,src}/**/*.{js,ts?(x)}\"",
+    "test": "node ./scripts/test.js --env=jsdom"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "author": "John Flockton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thegreatercurve/boomerang-socket/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.1.1",
+    "coveralls": "^3.0.0",
+    "jest": "^22.2.1",
+    "prettier": "^1.10.2",
+    "ts-jest": "^22.0.3",
+    "ts-loader": "^3.5.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.7.0",
+    "typescript": "^2.7.1",
+    "uglifyjs-webpack-plugin": "^1.2.0",
+    "webpack": "^3.11.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/!(index|types|*.d).ts?(x)"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "testMatch": [
+      "<rootDir>/src/**/?(*.)(spec|test).ts?(x)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "jsx",
+      "js",
+      "json"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5"
+  }
+}

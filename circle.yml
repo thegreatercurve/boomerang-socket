@@ -1,0 +1,88 @@
+default_image: &default_image
+  working_directory: ~/repo
+  docker:
+      - image: circleci/node:7.10
+
+default_filters: &default_filters
+  filters:
+    tags:
+      only: /.*/
+    branches:
+      only: /.*/
+
+version: 2
+jobs:
+  install:
+    <<: *default_image
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+  format:
+    <<: *default_image
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: npm run format:check
+  test:
+    <<: *default_image
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: npm run test
+      - run: npm run coverage
+  build:
+    <<: *default_image
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: npm run build
+      - save_cache:
+          key: dependency-cache-build-{{ checksum "package.json" }}
+          paths:
+            - ~/repo/lib
+  publish_npm:
+    <<: *default_image
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-build-{{ checksum "package.json" }}
+      - run: echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
+      - run: npm publish
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - install:
+          <<: *default_filters
+      - format:
+          <<: *default_filters
+          requires:
+            - install
+      - test:
+          <<: *default_filters
+          requires:
+            - install
+      - build:
+          <<: *default_filters
+          requires:
+            - install
+      - publish_npm:
+          context: npm-user
+          requires:
+            - format
+            - test
+            - build
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/

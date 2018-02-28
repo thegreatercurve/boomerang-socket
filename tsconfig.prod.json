@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "declaration": false
+  },
+  "exclude": ["**/*.test.ts", "types.ts"],
+  "extends": "./tsconfig.json"
+}
