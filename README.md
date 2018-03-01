@@ -32,11 +32,7 @@ npm run test
 It can be used in exactly the same way as [a native WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket), with exactly the same API.
 
 ```js
-// ES2015
 import BoomerangSocket from "boomerang-socket";
-
-// ES5
-const BoomerangSocket = require("boomerang-socket");
 
 const socket = new BoomerangSocket("wss://localhost:8080");
 
