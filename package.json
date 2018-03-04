@@ -1,11 +1,11 @@
 {
   "name": "boomerang-socket",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A simple WebSocket wrapper with automatic reconnection",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "webpack",
+    "build": "rollup -c",
     "clean": "rm -rf ./lib",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "build:prod": "npm run clean && npm run build && npm run build:types",
@@ -43,13 +43,13 @@
     "coveralls": "^3.0.0",
     "jest": "^22.2.1",
     "prettier": "^1.10.2",
+    "rollup": "^0.56.3",
+    "rollup-plugin-typescript2": "^0.11.1",
+    "rollup-plugin-uglify": "^3.0.0",
     "ts-jest": "^22.0.3",
-    "ts-loader": "^3.5.0",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.7.0",
-    "typescript": "^2.7.1",
-    "uglifyjs-webpack-plugin": "^1.2.0",
-    "webpack": "^3.11.0"
+    "typescript": "^2.7.1"
   },
   "jest": {
     "collectCoverage": true,
