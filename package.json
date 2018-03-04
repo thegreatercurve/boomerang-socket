@@ -35,7 +35,8 @@
     "reconnectable",
     "reconnecting",
     "reconnection",
-    "persistant"
+    "persistant",
+    "automatic"
   ],
   "devDependencies": {
     "@types/jest": "^22.1.1",
