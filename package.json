@@ -23,6 +23,21 @@
   "bugs": {
     "url": "https://github.com/thegreatercurve/boomerang-socket/issues"
   },
+  "homepage": "https://github.com/thegreatercurve/boomerang-socket#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thegreatercurve/boomerang-socket.git"
+  },
+  "keywords": [
+    "websocket",
+    "socket",
+    "reconnect",
+    "reconnectable",
+    "reconnecting",
+    "reconnection",
+    "persistant",
+    "automatic"
+  ],
   "devDependencies": {
     "@types/jest": "^22.1.1",
     "coveralls": "^3.0.0",
