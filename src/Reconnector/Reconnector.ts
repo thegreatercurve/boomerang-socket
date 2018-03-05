@@ -58,7 +58,7 @@ class Reconnector {
 
     this.ws.onopen = this.reconnectSuccessful;
 
-    this.connectTimeout = window.setTimeout(
+    this.connectTimeout = setTimeout(
       () => this.ws.close(),
       this.options.connectTimeout
     );
@@ -67,7 +67,7 @@ class Reconnector {
   }
 
   private reconnect() {
-    this.reconnectTimeout = window.setTimeout(
+    this.reconnectTimeout = setTimeout(
       this.reconnectUnsuccessful,
       this.backoff
     );
@@ -81,8 +81,8 @@ class Reconnector {
   }
 
   private reconnectSuccessful(e: Event) {
-    window.clearTimeout(this.connectTimeout);
-    window.clearTimeout(this.reconnectTimeout);
+    clearTimeout(this.connectTimeout);
+    clearTimeout(this.reconnectTimeout);
 
     delete this.connectTimeout;
     delete this.reconnectTimeout;
@@ -98,7 +98,7 @@ class Reconnector {
 
   private reconnectUnsuccessful(e: Event) {
     if (this.attempts < 1) {
-      window.clearTimeout(this.reconnectTimeout);
+      clearTimeout(this.reconnectTimeout);
 
       delete this.reconnectTimeout;
 

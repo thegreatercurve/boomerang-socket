@@ -7,7 +7,6 @@ export default {
     file: "lib/index.js",
     format: "cjs",
   },
-  context: "window",
   plugins: [
     typescript({
       clean: true,
