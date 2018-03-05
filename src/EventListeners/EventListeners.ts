@@ -21,7 +21,7 @@ export class EventListeners {
     const { type } = e;
 
     if (this.store[type]) {
-      this.store[type].map((cb: EventListener) => cb.call(window, e));
+      this.store[type].map((cb: EventListener) => cb.call(this, e));
     }
   };
 
