@@ -38,15 +38,15 @@ import BoomerangSocket from "boomerang-socket";
 // Or CommonJS
 const BoomerangSocket = require("boomerang-socket");
 
-const socket = new BoomerangSocket("wss://localhost:8080");
+const socket = new BoomerangSocket("wss://localhost:5000");
 
-socket.addEventListener("open", (e) => {
-  socket.send("hello!")
+socket.addEventListener("open", (event) => {
+  socket.send("Hello server!");
 });
 
-socket.onmessage = (data) => {
-  socket.send("message from server received!")
-});
+socket.onmessage = (event) =>  {
+  console.log("Message from server: ", event.data);
+};
 ```
 
 The only difference is that the `BoomerangSocket` constructor accepts an additional third argument: an options config object which customises the auto-reconnect behaviour.
