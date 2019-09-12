@@ -2,7 +2,7 @@
 
 # Boomerang Socket
 
-[![CircleCI](https://circleci.com/gh/thegreatercurve/boomerang-socket.svg?style=shield&circle-token=b9eab2c726cc4ef104830352a9a46c3b06d07629)](https://circleci.com/gh/thegreatercurve/boomerang-socket) [![Coverage Status](https://coveralls.io/repos/github/thegreatercurve/boomerang-socket/badge.svg?branch=master)](https://coveralls.io/github/thegreatercurve/boomerang-socket?branch=master)
+[![CircleCI](https://circleci.com/gh/thegreatercurve/boomerang-socket.svg?style=shield&circle-token=b9eab2c726cc4ef104830352a9a46c3b06d07629)](https://circleci.com/gh/thegreatercurve/boomerang-socket) [![Coverage Status](https://coveralls.io/repos/github/thegreatercurve/boomerang-socket/badge.svg?branch=master)](https://coveralls.io/github/thegreatercurve/boomerang-socket?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/thegreatercurve/boomerang-socket.svg)](https://greenkeeper.io/)
 
 Boomerang Socket is a small JavaScript library that extends the native WebSocket API to allow automatic reconnection if a client is disconnected.
 
